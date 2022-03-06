@@ -26,9 +26,9 @@ This pings a AWS's US East gateway (us-east-1; `3.80.0.0`) and then `POST`s the 
 ## Cron
 I test the network speeds to key Amazon [data centres](http://ec2-reachability.amazonaws.com/) and push the result to [Home Assistant](https://www.home-assistant.io/) via a simple [relay](https://github.com/renenw/relay), using the following cron:
 ```
-   *  *    *   *   *   bash -c 'ping/ruby ping.rb     3.80.0.0 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_us_east_1'                                      > /dev/null 2>&1
-   *  *    *   *   *   bash -c 'ping/ruby ping.rb    3.248.0.0 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_eu_west_1'                                      > /dev/null 2>&1
-   *  *    *   *   *   bash -c 'ping/ruby ping.rb 13.245.0.253 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_af_south_1'                                     > /dev/null 2>&1
+   *  *    *   *   *   bash -c 'ruby ping/ping.rb     3.80.0.0 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_us_east_1'                                      > /dev/null 2>&1
+   *  *    *   *   *   bash -c 'ruby ping/ping.rb    3.248.0.0 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_eu_west_1'                                      > /dev/null 2>&1
+   *  *    *   *   *   bash -c 'ruby ping/ping.rb 13.245.0.253 | curl -H "Content-Type: application/json" -X POST -d "$(</dev/stdin)" http://192.168.0.252:3553/?source=ping_af_south_1'                                     > /dev/null 2>&1
 ```
 # Setup
 ## Dependencies
